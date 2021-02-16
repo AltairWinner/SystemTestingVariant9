@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SystemTestingVariant9WPFApp", "SystemTestingVariant9\SystemTestingVariant9WPFApp.csproj", "{7F4AF147-BCF5-4A53-9908-F3C5F6BD11D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Variant9UnitTesting", "Variant9UnitTesting\Variant9UnitTesting.csproj", "{BEF83410-D19B-4750-B9F5-CFE1DA0C67B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F4AF147-BCF5-4A53-9908-F3C5F6BD11D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F4AF147-BCF5-4A53-9908-F3C5F6BD11D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F4AF147-BCF5-4A53-9908-F3C5F6BD11D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F4AF147-BCF5-4A53-9908-F3C5F6BD11D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEF83410-D19B-4750-B9F5-CFE1DA0C67B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEF83410-D19B-4750-B9F5-CFE1DA0C67B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEF83410-D19B-4750-B9F5-CFE1DA0C67B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEF83410-D19B-4750-B9F5-CFE1DA0C67B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {011C3B46-A449-4F21-B646-7A975E9211A9}
+	EndGlobalSection
+EndGlobal
