@@ -49,7 +49,7 @@ namespace Variant9UnitTesting.Work_6_System_Testing
                 {
                     //TODO: посмотреть документацию
                     var automation = new UIA3Automation();
-                    var window = app.GetMainWindow(automation, TimeSpan.FromSeconds(3));
+                    var window = app.GetMainWindow(automation, TimeSpan.FromSeconds(10));
 
                     Assert.IsNotNull(window, "Окно не было запущено.");
                     Assert.AreEqual("Вариант 9", window.Title);
@@ -67,14 +67,14 @@ namespace Variant9UnitTesting.Work_6_System_Testing
                         "Обработка пустого поля ввода неверна.");
 
                     //2 тест - нажатие кнопки при правильных данных
-                    textField.Text = "123 453 31 652";
+                    textField.Text = "123 453 127 652";
                     startButton.Click();
                     Thread.Sleep(200);
                     Assert.AreEqual("Отфильтрованный массив: 123 453 652", resultText.Text,
                         "Переданная строка обработана неверно.");
 
                     //3 тест - нажатие кнопки при верных данных, но при наличии "шума" в виде пробелов
-                    textField.Text = "   123    453 31    652    ";
+                    textField.Text = "   123    453 127    652    ";
                     startButton.Click();
                     Thread.Sleep(200);
                     Assert.AreEqual("Отфильтрованный массив: 123 453 652", resultText.Text,
@@ -99,12 +99,21 @@ namespace Variant9UnitTesting.Work_6_System_Testing
                     Assert.AreEqual("Введенные данные некорректны.", resultText.Text);
 
                     //7 тест - введенные данные содержат отрицательные числа
-                    textField.Text = "123 -453 31 -652";
+                    textField.Text = "123 -453 127 -652";
                     startButton.Click();
                     Thread.Sleep(200);
                     Assert.AreEqual("Отфильтрованный массив: 123 -453 -652", resultText.Text,
                         "Переданная строка обработана неверно.");
 
+
+                    //8 тест - Числа не трёхзначные
+                    textField.Text = "123 -453 31 -652";
+                    startButton.Click();
+                    Thread.Sleep(200);
+                    Assert.AreEqual("Введенные данные некорректны.", resultText.Text,
+                        "Переданная строка обработана неверно.");
+
+                    
                     app.Close();
                 }
                 catch (Exception ex)

@@ -65,6 +65,15 @@ namespace SystemTestingVariant9
                 if ((c < '0' || c > '9') && c != ' ' && c != '-')
                     return false;
             }
+            //Вторая проверка: в строке должно быть не более 10 чисел
+            var numbers = StringConverter.NormalizeWhiteSpaceForLoop(input).Trim().Split(' ');
+            if (numbers.Length > 10)
+                return false;
+
+            //3 проверка: числа должны быть трёхзначными. Учитываем отрицательные числа
+            foreach (var number in numbers)
+                if (!(number[0]=='-'&& number.Length == 4) && number.Length != 3)
+                    return false;
 
             return true;
         }
