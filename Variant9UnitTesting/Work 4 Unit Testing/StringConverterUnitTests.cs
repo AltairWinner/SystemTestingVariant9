@@ -24,10 +24,11 @@ namespace Variant9UnitTesting.Work_4_Unit_Testing
             Assert.AreEqual("876 -253 165", StringConverter.NumberArrayToString(new List<int> { 876, -253, 165 }), "В результате преобразования получена неверная строка при использовании отрицательного числа");
         }
 
+        [TestMethod]
         public void Test_NormalizeWhiteSpaceForLoop()
         {
-            Assert.AreEqual("12 54 23", "23      54 23", "Строка нормализована неверно, присутствуют лишние пробелы");
-            Assert.AreEqual("43 -54 56 51", "43     -54  56   51", "Строка нормализована неверно, присутствуют лишние пробелы");
+            Assert.AreEqual("23 54 23", StringConverter.NormalizeWhiteSpaceForLoop("23      54 23"), "Строка нормализована неверно, присутствуют лишние пробелы");
+            Assert.AreEqual("43 -54 56 51", StringConverter.NormalizeWhiteSpaceForLoop("43     -54  56   51"), "Строка нормализована неверно, присутствуют лишние пробелы");
         }
     }
 }

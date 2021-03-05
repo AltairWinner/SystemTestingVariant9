@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
 using FlaUI.UIA3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SystemTestingVariant9;
 using FlaUI.Core.AutomationElements;
-using FlaUI.Core.Definitions;
-using Label = FlaUI.Core.AutomationElements.Label;
 
 namespace Variant9UnitTesting.Work_6_System_Testing
 {
@@ -51,54 +45,57 @@ namespace Variant9UnitTesting.Work_6_System_Testing
                     var automation = new UIA3Automation();
                     var window = app.GetMainWindow(automation, TimeSpan.FromSeconds(10));
 
+                    //Тест 1 - проверка запуска приложения
                     Assert.IsNotNull(window, "Окно не было запущено.");
+                    //Тест 2 - проверка заголовка окна
                     Assert.AreEqual("Вариант 9", window.Title);
 
+                    //Находим нужные нам контролы для дальнейшей работы
                     var textField = window.FindFirstDescendant(cf => cf.ByAutomationId("MainWindow_InputArrayBox"))
                         .AsTextBox();
                     var startButton = window.FindFirstDescendant(cf => cf.ByText("Выполнить")).AsButton();
                     var resultText = window.FindFirstDescendant(cf => cf.ByAutomationId("MainWindow_ResultTextBlock"))
                         .AsTextBox();
 
-                    //1 тест - нажатие кнопки при пустом поле
+                    //3 тест - нажатие кнопки при пустом поле
                     startButton.Click();
                     Thread.Sleep(200);
                     Assert.AreEqual("Был передан пустой массив.", resultText.Text,
                         "Обработка пустого поля ввода неверна.");
 
-                    //2 тест - нажатие кнопки при правильных данных
+                    //4 тест - нажатие кнопки при правильных данных
                     textField.Text = "123 453 127 652";
                     startButton.Click();
                     Thread.Sleep(200);
                     Assert.AreEqual("Отфильтрованный массив: 123 453 652", resultText.Text,
                         "Переданная строка обработана неверно.");
 
-                    //3 тест - нажатие кнопки при верных данных, но при наличии "шума" в виде пробелов
+                    //5 тест - нажатие кнопки при верных данных, но при наличии "шума" в виде пробелов
                     textField.Text = "   123    453 127    652    ";
                     startButton.Click();
                     Thread.Sleep(200);
                     Assert.AreEqual("Отфильтрованный массив: 123 453 652", resultText.Text,
                         "Переданная строка обработана неверно. В переданной строке присутствовали пробелы.");
 
-                    //4 тест - введенные данные не содержат подходящих элементов, должно выводиться сообщение.
+                    //6 тест - введенные данные не содержат подходящих элементов, должно выводиться сообщение.
                     textField.Text = "324 534";
                     startButton.Click();
                     Thread.Sleep(200);
                     Assert.AreEqual("В переданном массиве нет чисел, удовлетворяющих условию.", resultText.Text);
 
-                    //5 тест - введенные данные обработать невозможно из-за ошибок в них
+                    //7 тест - введенные данные обработать невозможно из-за ошибок в них
                     textField.Text = "4198649126412963779273 sadfsadfq1qrfhqphf8 sdfsd";
                     startButton.Click();
                     Thread.Sleep(200);
                     Assert.AreEqual("Введенные данные некорректны.", resultText.Text);
 
-                    //6 тест - введенные данные обработать невозможно, но в этот раз в них содержатся только цифры
+                    //8 тест - введенные данные обработать невозможно, но в этот раз в них содержатся только цифры
                     textField.Text = "4198649126412963779273 1251235 1521532";
                     startButton.Click();
                     Thread.Sleep(200);
                     Assert.AreEqual("Введенные данные некорректны.", resultText.Text);
 
-                    //7 тест - введенные данные содержат отрицательные числа
+                    //9 тест - введенные данные содержат отрицательные числа
                     textField.Text = "123 -453 127 -652";
                     startButton.Click();
                     Thread.Sleep(200);
@@ -106,7 +103,7 @@ namespace Variant9UnitTesting.Work_6_System_Testing
                         "Переданная строка обработана неверно.");
 
 
-                    //8 тест - Числа не трёхзначные
+                    //10 тест - Числа не трёхзначные
                     textField.Text = "123 -453 31 -652";
                     startButton.Click();
                     Thread.Sleep(200);

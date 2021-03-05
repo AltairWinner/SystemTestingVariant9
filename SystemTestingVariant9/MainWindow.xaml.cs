@@ -13,6 +13,9 @@ namespace SystemTestingVariant9
         {
             InitializeComponent();
             ResultTextBlock.Text = "";
+
+            //Тот самый фокус элемента при открытии программы
+            InputArrayBox.Focus();
         }
 
         private void ExecuteButton_Click(object sender, RoutedEventArgs e)
